@@ -1,0 +1,6 @@
+name: Run node script
+description: Runs a Node.js script
+
+runs:
+  using: node20
+  main: index.js
