@@ -1,5 +1,4 @@
-name: Run Node.js Script
-
+name: Example Workflow
 on:
   push:
     branches:
@@ -12,15 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Node.js script
+      - name: Run custom Node.js Action
+        uses: ./ # Caminho para a Action local
         env:
           MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
-        run: node index.js
