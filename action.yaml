@@ -2,7 +2,7 @@ name: Run node script
 description: Runs a Node.js script
 
 runs:
-  using: node20
-  main: index.js
+  using: "node20"
+  main: "index.js"
 env:
   MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
