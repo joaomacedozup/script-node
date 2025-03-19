@@ -14,8 +14,8 @@ jobs:
       - name: Run custom Node.js Action
         uses: ./ # Caminho para a Action local
       - name: Create .env file with secrets
-          run: |
-            echo "MY_SECRET_KEY1=${{ secrets.MY_SECRET_KEY }}" >> .env
-            echo "MY_SECRET_KEY2=${{ secrets.DB_PASSWORD }}" >> .env
+        run: |
+          echo "MY_SECRET_KEY1=${{ secrets.MY_SECRET_KEY }}" >> .env
+          echo "MY_SECRET_KEY2=${{ secrets.DB_PASSWORD }}" >> .env
         env:
           MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
