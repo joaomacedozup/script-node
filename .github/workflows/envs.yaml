@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-
 jobs:
   run-node-script:
     runs-on: ubuntu-latest
@@ -15,6 +14,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+
+      - name: Load environment variables
+        run: |
+          cp .env.example .env
 
       - name: Run application
         env:
