@@ -1,4 +1,5 @@
-name: Example Workflow
+name: Run Node.js Script
+
 on:
   push:
     branches:
@@ -11,11 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run custom Node.js Action
-        uses: ./ # Caminho para a Action local
-      - name: Create .env file with secrets
-        run: |
-          echo "MY_SECRET_KEY1=${{ secrets.MY_SECRET_KEY }}" >> .env
-          echo "MY_SECRET_KEY2=${{ secrets.DB_PASSWORD }}" >> .env
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Node.js script
         env:
           MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
+        run: node index.js
