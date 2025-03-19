@@ -1,8 +1,10 @@
-name: Run Node.js script
+name: Run Node.js Script
+
 on:
   push:
     branches:
       - main
+
 jobs:
   run-node-script:
     runs-on: ubuntu-latest
@@ -15,14 +17,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Load environment variables
-        run: |
-          cp .env.example .env
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run application
+      - name: Run Node.js script
         env:
-          MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
-        run: |
-          echo "Running Node.js script with secret"
-          npm install
-          node index.js
+          MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }} # Expondo o secret como variável de ambiente
+        run: node index.js
