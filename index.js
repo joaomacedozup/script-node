@@ -6,7 +6,7 @@ const path = require('path');
 
 const secretKey = process.env.MY_SECRET_KEY;
 
-console.log(`Your secret key is: ${secretKey}: ${JSON.parse(process.env)}`);
+console.log(`Your secret key is: ${secretKey}: ${process.env}`);
 
 function readPackageJson() {
   try {
