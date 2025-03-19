@@ -2,6 +2,5 @@ name: Run node script
 description: Runs a Node.js script
 
 runs:
-  - name: Configurar Node.js
-    using: node20
-    main: index.js
+  using: node20
+  main: index.js
