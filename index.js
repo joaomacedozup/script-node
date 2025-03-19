@@ -1,7 +1,14 @@
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 // Função para ler o arquivo package.json
+
+
+const secretKey = process.env.MY_SECRET_KEY;
+
+console.log(`Your secret key is: ${secretKey}`);
+
 function readPackageJson() {
   try {
     // Caminho para o arquivo package.json no diretório atual
