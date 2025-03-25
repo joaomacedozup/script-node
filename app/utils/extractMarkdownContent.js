@@ -1,12 +1,11 @@
 const extractMarkdownContent = (text) => {
   const regex = /```markdown([\s\S]*?)```/g;
-  const matches = [];
+  let result = '';
   let match;
-
   while ((match = regex.exec(text)) !== null) {
-    matches.push(match[1].trim());
+    result += match[1].trim() + '\n';
   }
-
-  return matches;
+  return result.trim();
 };
+
 module.exports = { extractMarkdownContent };
