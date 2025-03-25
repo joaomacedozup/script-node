@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const getAuthToken = async () => {
   try {
-
+    console.log(`${process.env.AUTH_URL}/${process.env.REALM}/oidc/oauth/token`)
     const response = await axios.post(
       `${process.env.AUTH_URL}/${process.env.REALM}/oidc/oauth/token`,
       new URLSearchParams({
