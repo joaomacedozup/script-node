@@ -46,7 +46,7 @@ const getExecutionStatus = async (token, execution_id) => {
 
       if (status === 'COMPLETED') {
         console.log('Execution completed successfully:', data);
-        return data; // Retorna os dados se a execução foi concluída com sucesso
+        return data.result; // Retorna os dados se a execução foi concluída com sucesso
       } else if (status === 'FAILURE') {
         console.error('Execution failed:', data);
         throw new Error('Execution failed');
