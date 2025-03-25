@@ -1,4 +1,4 @@
-const { getAuthToken } = require('./services/authService');
+const { getAuthToken } = require('./services/auth');
 
 const main = async () => {
   try {
