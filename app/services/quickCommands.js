@@ -65,23 +65,9 @@ const getExecutionStatus = async (token, execution_id) => {
       }
 
       // Aguarda um tempo antes de tentar novamente (opcional)
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Aguarda 1 segundo
+      await new Promise((resolve) => setTimeout(resolve, 3000)); // Aguarda 1 segundo
     }
   }
 };
 
-// {
-//   execution_id: '01JQ7F20AYV5QNS49PFT3FWND7',
-//   quick_command_slug: 'inventario-de-dependencias',
-//   conversation_id: '01JQ7F20AYHQRMNHFF8X6E4BMS',
-//   progress: {
-//     start: '2025-03-25T20:14:15.902960Z',
-//     end: null,
-//     duration: null,
-//     execution_percentage: 0,
-//     status: 'RUNNING'
-//   },
-//   steps: null,
-//   result: null
-// }
 module.exports = { createQuickCommandExecution, getExecutionStatus };

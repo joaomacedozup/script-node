@@ -35,7 +35,7 @@ const uploadFile = async (data, content) => {
     });
 
     // const file = await updateReadme()
-    form.append('file', fs.createReadStream(content));
+    form.append('file', content);
 
     const response = await axios.post(data.url, form, {
       headers: {
