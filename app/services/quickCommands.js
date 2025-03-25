@@ -38,7 +38,20 @@ const getExecutionStatus = async (token, execution_id) => {
         }
       );
 
-      return response.data; // Retorna os dados se a requisição for bem-sucedida
+      
+      const data = response.data;
+
+      // Verifica o status da execução
+      const status = data.progress.status;
+
+      if (status === 'COMPLETED') {
+        console.log('Execution completed successfully:', data);
+        return data; // Retorna os dados se a execução foi concluída com sucesso
+      } else if (status === 'FAILURE') {
+        console.error('Execution failed:', data);
+        throw new Error('Execution failed');
+      }
+      console.log(`Execution still running. Attempt ${attempt + 1}`);
     } catch (error) {
       attempt++;
       console.error(
@@ -57,4 +70,18 @@ const getExecutionStatus = async (token, execution_id) => {
   }
 };
 
+// {
+//   execution_id: '01JQ7F20AYV5QNS49PFT3FWND7',
+//   quick_command_slug: 'inventario-de-dependencias',
+//   conversation_id: '01JQ7F20AYHQRMNHFF8X6E4BMS',
+//   progress: {
+//     start: '2025-03-25T20:14:15.902960Z',
+//     end: null,
+//     duration: null,
+//     execution_percentage: 0,
+//     status: 'RUNNING'
+//   },
+//   steps: null,
+//   result: null
+// }
 module.exports = { createQuickCommandExecution, getExecutionStatus };
