@@ -19,7 +19,7 @@ const uploadTemporaryFileToKnowledgeSource = async (token, content, fileName, ta
         },
       }
     );
-    await uploadFile(response.data)
+    await uploadFile(response.data, content)
     return response.data;
   } catch (error) {
     console.error('Error uploading file:', error.response?.data || error.message);
