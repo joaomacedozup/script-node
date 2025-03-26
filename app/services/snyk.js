@@ -40,6 +40,7 @@ const getDependencies = async (orgId) => {
   let page = 0;
   const perPage = 150;
 
+  console.log(baseUrl, filters)
   try {
     while (true) {
       const response = await axios.post(`${baseUrl}?page=${page}&perPage=${perPage}`, filters, {
