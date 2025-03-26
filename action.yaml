@@ -18,5 +18,5 @@ runs:
           SNYK_API_KEY: ${{ secrets.SNYK_API_KEY }}
           SNYK_ORDER_ID: ${{ secrets.SNYK_ORDER_ID }}
           SNYK_PROJECTS: ${{ secrets.SNYK_PROJECTS }}
-      run: node app/app.js
+        run: node app/app.js
   # main: index.js
