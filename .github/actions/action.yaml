@@ -9,5 +9,5 @@ runs:
     - name: Run Node.js script
       env:
         MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
-      run: node app/app.js
+      run: node index.js
   # main: index.js

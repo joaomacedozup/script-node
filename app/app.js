@@ -12,14 +12,6 @@ const main = async () => {
   const token = await getAuthToken();
   console.log('Auth Token:', token);
 
-  // const packageJson = await readPackageJson();
-
-  // const quickCommand = await createQuickCommandExecution(token, 'inventario-de-dependencias', packageJson)
-  // console.log(quickCommand)
-
-  // const quickCommandStatus = await getExecutionStatus(token, quickCommand)
-  // console.log(quickCommandStatus)
-
   const fileUploadResponse = await uploadTemporaryFileToKnowledgeSource(
     token,
     allDependencies,
