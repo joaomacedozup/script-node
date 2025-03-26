@@ -7,6 +7,16 @@ runs:
     - name: Install dependencies
       run: npm install
     - name: Run Node.js script
-      env:
-        MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REALM: ${{ secrets.REALM }}
+          BASE_URL: ${{ secrets.BASE_URL }}
+          AUTH_URL: ${{ secrets.AUTH_URL }}
+          KNOWLEDGE_SOURCE_NAME: ${{ secrets.KNOWLEDGE_SOURCE_NAME }}
+          KNOWLEDGE_SOURCE_ID: ${{ secrets.KNOWLEDGE_SOURCE_ID }}
+          SNYK_API_KEY: ${{ secrets.SNYK_API_KEY }}
+          SNYK_ORDER_ID: ${{ secrets.SNYK_ORDER_ID }}
+          SNYK_PROJECTS: ${{ secrets.SNYK_PROJECTS }}
       run: node app/app.js
+  # main: index.js
