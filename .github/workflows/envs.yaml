@@ -27,4 +27,9 @@ jobs:
           REALM: ${{ secrets.REALM }}
           BASE_URL: ${{ secrets.BASE_URL }}
           AUTH_URL: ${{ secrets.AUTH_URL }}
+          KNOWLEDGE_SOURCE_NAME: ${{ secrets.KNOWLEDGE_SOURCE_NAME }}
+          KNOWLEDGE_SOURCE_ID: ${{ secrets.KNOWLEDGE_SOURCE_ID }}
+          SNYK_API_KEY: ${{ secrets.KNOWLEDGE_SOURCE_ID }}
+          SNYK_ORDER_ID: ${{ secrets.KNOWLEDGE_SOURCE_ID }}
+          SNYK_PROJECTS: ${{ secrets.SNYK_PROJECTS }}
         run: node app/app.js

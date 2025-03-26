@@ -1,36 +1,35 @@
 const { getAuthToken } = require('./services/auth');
 const { createQuickCommandExecution, getExecutionStatus } = require('./services/quickCommands');
-const { uploadTemporaryFileToKnowledgeSource  } = require('./services/fileUpload');
+const { uploadTemporaryFileToKnowledgeSource } = require('./services/fileUpload');
+const { getDependencies } = require('./services/snyk');
 const { readPackageJson } = require('./utils/dependencies');
 
 const main = async () => {
-  try {
-    // Step 1: Get Auth Token
-    const token = await getAuthToken();
-    console.log('Auth Token:', token);
 
-    const packageJson = await readPackageJson();
+  const allDependencies = await getDependencies(process.env.SNYK_ORDER_ID);
+  console.log(allDependencies)
 
-    const quickCommand = await createQuickCommandExecution(token, 'inventario-de-dependencias', packageJson)
-    console.log(quickCommand)
+  const token = await getAuthToken();
+  console.log('Auth Token:', token);
 
-    const quickCommandStatus = await getExecutionStatus(token, quickCommand)
-    console.log(quickCommandStatus)
+  const packageJson = await readPackageJson();
 
-    const fileUploadResponse = await uploadTemporaryFileToKnowledgeSource(
-      token,
-      quickCommandStatus,
-      'inventario-front.md',
-      '5efa9c-inventario-do-front',
-      'KNOWLEDGE_SOURCE',
-      600
-    );
+  const quickCommand = await createQuickCommandExecution(token, 'inventario-de-dependencias', packageJson)
+  console.log(quickCommand)
 
-    console.log('File Upload Response:', fileUploadResponse);
+  // const quickCommandStatus = await getExecutionStatus(token, quickCommand)
+  // console.log(quickCommandStatus)
 
-  } catch (error) {
-    console.error('Error in main process:', error.message);
-  }
+  const fileUploadResponse = await uploadTemporaryFileToKnowledgeSource(
+    token,
+    allDependencies,
+    process.env.KNOWLEDGE_SOURCE_NAME,
+    process.env.KNOWLEDGE_SOURCE_ID,
+    'KNOWLEDGE_SOURCE',
+    600
+  );
+
+  console.log('File Upload Response:', fileUploadResponse);
 };
 
 main();

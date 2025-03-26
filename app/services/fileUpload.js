@@ -36,7 +36,6 @@ const uploadFile = async (data, content) => {
       form.append(key, value);
     });
 
-    // const file = await updateReadme()
     form.append('file', extractMarkdownContent(content));
 
     const response = await axios.post(data.url, form, {
