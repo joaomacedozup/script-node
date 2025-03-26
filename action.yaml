@@ -2,5 +2,11 @@ name: Run node script
 description: Runs a Node.js script
 
 runs:
-  using: node20
-  main: app/app.js
+  using: composite
+  steps:
+    - name: Install dependencies
+      run: npm install
+    - name: Run Node.js script
+      env:
+        MY_SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
+      run: node app/app.js
