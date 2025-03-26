@@ -1,19 +1,6 @@
-schema-version: v3
-kind: action
-metadata:
-  name: script-node
-  display-name: Script Node
-  description: Runs a Node.js script on Linux
-  version: 1.0.0
-spec:
-  type: shell
-  shell:
-    workdir: .
-    requirements-check:
-      - check-command: 
-          linux: |
-            node --version
-        info: "Node.js is not installed!"
-    script: |
-      npm install
-      node app/app.js
+name: Run node script
+description: Runs a Node.js script
+
+runs:
+  using: node20
+  main: app/app.js
