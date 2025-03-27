@@ -4,14 +4,14 @@ const fs = require('fs');
 
 const { extractMarkdownContent } = require('../utils/extractMarkdownContent');
 
-const uploadTemporaryFileToKnowledgeSource = async (token, content, fileName, targetId, targetType, expiration) => {
+const uploadTemporaryFileToKnowledgeSource = async (token, content, file_name, target_id, target_type, expiration) => {
   try {
     const response = await axios.post(
       `${process.env.BASE_URL}/file-upload/form`,
       {
-        file_name: fileName,
-        target_id: targetId,
-        target_type: targetType,
+        file_name,
+        target_id,
+        target_type,
         expiration,
       },
       {
@@ -36,7 +36,8 @@ const uploadFile = async (data, content) => {
       form.append(key, value);
     });
 
-    form.append('file', extractMarkdownContent(content));
+    fs.writeFileSync('README.md', content);
+    form.append('file', fs.createReadStream('README.md'));
 
     const response = await axios.post(data.url, form, {
       headers: {
