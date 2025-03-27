@@ -4,3 +4,9 @@ description: Runs a Node.js script
 runs:
   using: node20
   main: app/app.js
+
+hooks:
+  - type: run
+    trigger: before-render
+    commands:
+      - npm install
